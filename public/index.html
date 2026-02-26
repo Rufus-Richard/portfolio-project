@@ -23,9 +23,9 @@
 </section>
 
 <section id="about" class="section">
-    <h2>About Me</h2>
+    <h1>About Me</h1>
     <div class="card">
-        <p>I am passionate about backend development, cloud computing and building real-world applications.</p>
+        <p>I am passionate about full stack website development, cloud computing and building real-world applications. A student of krsitu jayanti deemed to be university</p>
     </div>
 </section>
 
@@ -60,11 +60,38 @@
     <h2>Send Me a Message</h2>
     <form id="contactForm">
         <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
     </form>
+    <p id="responseMessage"></p>
 </section>
 
-<script src="script.js"></script>
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = {
+    name: this.name.value,
+    email: this.email.value,
+    message: this.message.value
+  };
+
+  const response = await fetch("/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formData)
+  });
+
+  const result = await response.json();
+
+  if (result.success) {
+    document.getElementById("responseMessage").innerText = "Message Sent Successfully!";
+    this.reset();
+  }
+});
+</script>
 </body>
 </html>
