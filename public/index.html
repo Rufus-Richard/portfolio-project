@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Portfolio</title>
+    <title>Rufus Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Rufus Richard</h1>
-    <p>Frontend Developer</p>
+<nav>
+    <h2 class="logo">Portfolio</h2>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Feedback</a></li>
+    </ul>
+</nav>
 
+<section class="hero">
+    <h1>Hi, I'm Rufus Richard</h1>
+    <p>Aspiring Developer | Cloud & Backend Enthusiast</p>
+</section>
+
+<section id="about" class="section">
+    <h2>About Me</h2>
+    <div class="card">
+        <p>I am passionate about backend development, cloud computing and building real-world applications.</p>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <h2>My Skills</h2>
+    <div class="grid">
+        <div class="card">Java</div>
+        <div class="card">Python</div>
+        <div class="card">Node.js</div>
+        <div class="card">Express</div>
+        <div class="card">Git & GitHub</div>
+    </div>
+</section>
+
+<section id="certificates" class="section">
+    <h2>Certificates</h2>
+    <div class="grid">
+        <img src="https://via.placeholder.com/300x200" class="img-card">
+        <img src="https://via.placeholder.com/300x200" class="img-card">
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="grid">
+        <div class="card">Portfolio Website</div>
+        <div class="card">Node Backend Messaging App</div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2>Send Me a Message</h2>
     <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
     </form>
-</div>
+</section>
 
 <script src="script.js"></script>
 </body>
