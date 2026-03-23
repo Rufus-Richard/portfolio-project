@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+nav a {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: yellow;
+}
+
+section {
+  padding: 40px;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+input, textarea {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button {
+  background: black;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #444;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>My Portfolio</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am learning full stack development 🚀</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>Java</li>
+    <li>Python</li>
+    <li>JavaScript</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p>My projects will be added here</p>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <p id="status"></p>
+</section>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
