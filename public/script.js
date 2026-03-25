@@ -3,7 +3,8 @@ import {
   getDatabase,
   ref,
   push,
-  onValue
+  onValue,
+  remove
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // 🔑 YOUR REAL CONFIG HERE
@@ -43,20 +44,39 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
 // DISPLAY REVIEWS
 const reviewsContainer = document.getElementById("reviewsContainer");
 
+let total = 0;
+let count = 0;
+
 onValue(ref(database, "reviews"), (snapshot) => {
   reviewsContainer.innerHTML = "";
+
+  if (!snapshot.exists()) {
+    reviewsContainer.innerHTML = "<p>No reviews yet. Be the first!</p>";
+    return;
+  }
 
   snapshot.forEach((childSnapshot) => {
     const data = childSnapshot.val();
 
-    const reviewCard = `
-      <div class="card">
-        <h3>${data.name}</h3>
-        <p class="stars">${"⭐".repeat(data.rating)}</p>
-        <p>${data.review}</p>
-      </div>
-    `;
+    total += Number(data.rating);
+    count++;
+
+   const reviewCard = `
+  <div class="card">
+    <h3>${data.name}</h3>
+    <p class="stars">${"⭐".repeat(data.rating)}</p>
+    <p>${data.review}</p>
+    <button onclick="deleteReview('${childSnapshot.key}')">Delete</button>
+  </div>
+`;
 
     reviewsContainer.innerHTML += reviewCard;
   });
+
+  const avg = (total / count).toFixed(1);
+  document.getElementById("avgRating").innerText =
+    "⭐ Average Rating: " + avg + " / 5";
 });
+window.deleteReview = function (id) {
+  remove(ref(database, "reviews/" + id));
+};

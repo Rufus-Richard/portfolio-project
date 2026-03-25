@@ -1,39 +1,42 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f4f6f9;
+  background: #f8fafc;
   margin: 0;
 }
 
+/* HEADER */
 header {
-  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  background: linear-gradient(135deg, #ff4d4d, #ff1a75);
   color: white;
   text-align: center;
+  padding: 25px;
+}
+
+/* MAIN */
+section {
+  max-width: 800px;
+  margin: auto;
   padding: 20px;
 }
 
-section {
-  padding: 30px;
-  max-width: 800px;
-  margin: auto;
-}
-
+/* FORM */
 form {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 input, select, textarea {
+  width: 100%;
   margin: 10px 0;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 100%;
+  border: 1px solid #ddd;
 }
 
 button {
-  background: #4f46e5;
+  background: #ff4d4d;
   color: white;
   padding: 12px;
   border: none;
@@ -42,9 +45,10 @@ button {
 }
 
 button:hover {
-  background: #4338ca;
+  background: #e6005c;
 }
 
+/* REVIEWS */
 #reviewsContainer {
   margin-top: 20px;
 }
@@ -54,14 +58,19 @@ button:hover {
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
-.card h3 {
-  margin: 0;
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .stars {
   color: gold;
-  margin: 5px 0;
+}
+
+.meta {
+  font-size: 12px;
+  color: gray;
 }
