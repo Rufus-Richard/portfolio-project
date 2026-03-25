@@ -39,12 +39,25 @@
 
 <section id="contact">
   <h2>Contact Me</h2>
-  <form id="contactForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <textarea id="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send</button>
-  </form>
+  <form id="reviewForm">
+  <input type="text" id="name" placeholder="Your Name" required>
+
+  <select id="rating" required>
+    <option value="">Select Rating ⭐</option>
+    <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+    <option value="4">⭐⭐⭐⭐ (4)</option>
+    <option value="3">⭐⭐⭐ (3)</option>
+    <option value="2">⭐⭐ (2)</option>
+    <option value="1">⭐ (1)</option>
+  </select>
+
+  <textarea id="review" placeholder="Write your review..." required></textarea>
+
+  <button type="submit">Submit Review</button>
+</form>
+
+<h2>All Reviews</h2>
+<div id="reviewsContainer"></div>
 
   <p id="status"></p>
 </section>

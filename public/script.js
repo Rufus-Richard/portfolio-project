@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import {
   getDatabase,
   ref,
-  push
+  push,
+  onValue
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // 🔑 YOUR REAL CONFIG HERE
@@ -22,27 +23,40 @@ const database = getDatabase(app);
 
 console.log("Firebase connected ✅");
 
-// Form submit
-document.getElementById("contactForm").addEventListener("submit", function (e) {
+// SUBMIT REVIEW
+document.getElementById("reviewForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+  const rating = document.getElementById("rating").value;
+  const review = document.getElementById("review").value;
 
-  const messagesRef = ref(database, "messages");
-
-  push(messagesRef, {
+  push(ref(database, "reviews"), {
     name,
-    email,
-    message
-  })
-    .then(() => {
-      document.getElementById("status").innerText = "Message sent ✅";
-      document.getElementById("contactForm").reset();
-    })
-    .catch((error) => {
-      console.error(error);
-      document.getElementById("status").innerText = "Error ❌";
-    });
+    rating,
+    review
+  });
+
+  document.getElementById("reviewForm").reset();
+});
+
+// DISPLAY REVIEWS
+const reviewsContainer = document.getElementById("reviewsContainer");
+
+onValue(ref(database, "reviews"), (snapshot) => {
+  reviewsContainer.innerHTML = "";
+
+  snapshot.forEach((childSnapshot) => {
+    const data = childSnapshot.val();
+
+    const reviewCard = `
+      <div class="card">
+        <h3>${data.name}</h3>
+        <p class="stars">${"⭐".repeat(data.rating)}</p>
+        <p>${data.review}</p>
+      </div>
+    `;
+
+    reviewsContainer.innerHTML += reviewCard;
+  });
 });
