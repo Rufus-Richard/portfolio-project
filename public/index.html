@@ -1,73 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
 <header>
-  <h1>My Portfolio</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <h1>⭐ ReviewHub</h1>
+  <p>Discover & share reviews on movies, cafes & events</p>
 </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am learning full stack development 🚀</p>
-</section>
+<section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>Java</li>
-    <li>Python</li>
-    <li>JavaScript</li>
-  </ul>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <p>My projects will be added here</p>
-</section>
-
-<section id="contact">
-  <h2>Contact Me</h2>
   <form id="reviewForm">
-  <input type="text" id="name" placeholder="Your Name" required>
 
-  <select id="rating" required>
-    <option value="">Select Rating ⭐</option>
-    <option value="5">⭐⭐⭐⭐⭐ (5)</option>
-    <option value="4">⭐⭐⭐⭐ (4)</option>
-    <option value="3">⭐⭐⭐ (3)</option>
-    <option value="2">⭐⭐ (2)</option>
-    <option value="1">⭐ (1)</option>
-  </select>
+    <input type="text" id="name" placeholder="Your Name" required>
 
-  <textarea id="review" placeholder="Write your review..." required></textarea>
+    <input type="text" id="title" placeholder="What are you reviewing? (Movie/Cafe/Event)" required>
 
-  <button type="submit">Submit Review</button>
-</form>
+    <!-- ⭐ Star Rating -->
+    <div class="stars-input">
+      <span data-value="1">⭐</span>
+      <span data-value="2">⭐</span>
+      <span data-value="3">⭐</span>
+      <span data-value="4">⭐</span>
+      <span data-value="5">⭐</span>
+    </div>
 
-<h2 id="avgRating">⭐ Average Rating: 0</h2>
+    <textarea id="review" placeholder="Write your experience..." required></textarea>
 
-<h2>All Reviews</h2>
-<div id="reviewsContainer"></div>
+    <input type="text" id="image" placeholder="Paste Image URL (optional)">
 
-  <p id="status"></p>
-  <p style="text-align:center; color: gray;">
-  Share your experience and help others decide!
-</p>
+    <button type="submit">Post Review</button>
+
+  </form>
+
+  <h2 id="avgRating">⭐ Average Rating: 0</h2>
+
+  <div id="reviewsContainer"></div>
 
 </section>
 
-<script type="module" src="script.js"></script>
 </body>
-</html>

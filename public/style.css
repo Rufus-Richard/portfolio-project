@@ -1,20 +1,18 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+  background: #f1f5f9;
   margin: 0;
 }
 
-/* HEADER */
 header {
-  background: linear-gradient(135deg, #ff4d4d, #ff1a75);
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
   color: white;
   text-align: center;
-  padding: 25px;
+  padding: 30px;
 }
 
-/* MAIN */
 section {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
 }
@@ -22,55 +20,73 @@ section {
 /* FORM */
 form {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
 }
 
-input, select, textarea {
+input, textarea {
   width: 100%;
-  margin: 10px 0;
   padding: 12px;
-  border-radius: 8px;
+  margin: 10px 0;
+  border-radius: 10px;
   border: 1px solid #ddd;
 }
 
+/* STAR INPUT */
+.stars-input span {
+  font-size: 25px;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.stars-input span.active {
+  opacity: 1;
+}
+
+/* BUTTON */
 button {
-  background: #ff4d4d;
+  background: #ff416c;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #e6005c;
+  background: #e63950;
 }
 
 /* REVIEWS */
-#reviewsContainer {
-  margin-top: 20px;
-}
-
 .card {
   background: white;
   padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .stars {
   color: gold;
 }
 
-.meta {
-  font-size: 12px;
-  color: gray;
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

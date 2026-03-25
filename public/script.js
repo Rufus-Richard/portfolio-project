@@ -24,21 +24,45 @@ const database = getDatabase(app);
 
 console.log("Firebase connected ✅");
 
+let selectedRating = 0;
+
+const stars = document.querySelectorAll(".stars-input span");
+
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    selectedRating = star.getAttribute("data-value");
+
+    stars.forEach(s => s.classList.remove("active"));
+
+    for (let i = 0; i < selectedRating; i++) {
+      stars[i].classList.add("active");
+    }
+  });
+});
+
 // SUBMIT REVIEW
 document.getElementById("reviewForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const name = document.getElementById("name").value;
-  const rating = document.getElementById("rating").value;
+  const title = document.getElementById("title").value;
   const review = document.getElementById("review").value;
+  const image = document.getElementById("image").value;
+
+  if (selectedRating === 0) {
+    alert("Please select a rating");
+    return;
+  }
 
   push(ref(database, "reviews"), {
     name,
-    rating,
-    review
+    title,
+    rating: selectedRating,
+    review,
+    image
   });
 
-  document.getElementById("reviewForm").reset();
+  this.reset();
 });
 
 // DISPLAY REVIEWS
@@ -61,12 +85,13 @@ onValue(ref(database, "reviews"), (snapshot) => {
     total += Number(data.rating);
     count++;
 
-   const reviewCard = `
+  const reviewCard = `
   <div class="card">
-    <h3>${data.name}</h3>
+    <h3>${data.title}</h3>
+    <p>👤 ${data.name}</p>
     <p class="stars">${"⭐".repeat(data.rating)}</p>
     <p>${data.review}</p>
-    <button onclick="deleteReview('${childSnapshot.key}')">Delete</button>
+    ${data.image ? `<img src="${data.image}" />` : ""}
   </div>
 `;
 
