@@ -1,40 +1,103 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f1f5f9;
+  background: #f4f6f9;
   margin: 0;
 }
 
+/* SLIDER */
+.slider img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* HEADER */
 header {
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
   color: white;
   text-align: center;
-  padding: 30px;
+  padding: 25px;
 }
 
+/* MAIN */
 section {
   max-width: 900px;
   margin: auto;
   padding: 20px;
 }
 
-/* FORM */
-form {
+/* CATEGORY GRID */
+.category-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.category-grid div {
+  flex: 1;
   background: white;
   padding: 25px;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.category-grid div:hover {
+  transform: translateY(-5px);
+  background: #ff416c;
+  color: white;
+}
+
+/* ITEMS */
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.items div {
+  width: 30%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.items div:hover {
+  transform: scale(1.05);
+}
+
+.items img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.items p {
+  text-align: center;
+  font-weight: 500;
+}
+
+/* FORM */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  margin-top: 20px;
 }
 
 input, textarea {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #ddd;
 }
 
-/* STAR INPUT */
+/* STARS */
 .stars-input span {
   font-size: 25px;
   cursor: pointer;
@@ -49,24 +112,25 @@ input, textarea {
 button {
   background: #ff416c;
   color: white;
-  padding: 12px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button:hover {
   background: #e63950;
 }
 
-/* REVIEWS */
+/* CARDS */
 .card {
   background: white;
   padding: 15px;
-  margin-bottom: 20px;
+  margin: 15px 0;
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  animation: fadeIn 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease;
 }
 
 .card img {
@@ -79,11 +143,25 @@ button:hover {
   color: gold;
 }
 
+/* BACK BUTTON */
+button:first-child {
+  background: #444;
+}
+
+button:first-child:hover {
+  background: black;
+}
+
+/* HIDDEN */
+.hidden {
+  display: none;
+}
+
 /* ANIMATION */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;

@@ -17,91 +17,103 @@ const firebaseConfig = {
   messagingSenderId: "217559741548",
   appId: "1:217559741548:web:d817facd59d78419915449"
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getDatabase(app);
 
-console.log("Firebase connected ✅");
 
 let selectedRating = 0;
+let selectedItem = "";
 
-const stars = document.querySelectorAll(".stars-input span");
-
-stars.forEach(star => {
+// ⭐ rating
+document.querySelectorAll(".stars-input span").forEach((star, index) => {
   star.addEventListener("click", () => {
-    selectedRating = star.getAttribute("data-value");
-
-    stars.forEach(s => s.classList.remove("active"));
-
+    selectedRating = index + 1;
+    document.querySelectorAll(".stars-input span").forEach(s => s.classList.remove("active"));
     for (let i = 0; i < selectedRating; i++) {
-      stars[i].classList.add("active");
+      document.querySelectorAll(".stars-input span")[i].classList.add("active");
     }
   });
 });
 
-// SUBMIT REVIEW
-document.getElementById("reviewForm").addEventListener("submit", function (e) {
+// submit
+document.getElementById("reviewForm").addEventListener("submit", e => {
   e.preventDefault();
 
   const name = document.getElementById("name").value;
-  const title = document.getElementById("title").value;
   const review = document.getElementById("review").value;
   const image = document.getElementById("image").value;
 
-  if (selectedRating === 0) {
-    alert("Please select a rating");
-    return;
-  }
+  if (!selectedRating) return alert("Select rating");
 
-  push(ref(database, "reviews"), {
+  push(ref(db, "reviews"), {
     name,
-    title,
+    title: selectedItem,
     rating: selectedRating,
     review,
     image
   });
 
-  this.reset();
+  e.target.reset();
 });
 
-// DISPLAY REVIEWS
-const reviewsContainer = document.getElementById("reviewsContainer");
+// display
+const container = document.getElementById("reviewsContainer");
 
-let total = 0;
-let count = 0;
+onValue(ref(db, "reviews"), snapshot => {
+  container.innerHTML = "";
+  let total = 0, count = 0;
 
-onValue(ref(database, "reviews"), (snapshot) => {
-  reviewsContainer.innerHTML = "";
-
-  if (!snapshot.exists()) {
-    reviewsContainer.innerHTML = "<p>No reviews yet. Be the first!</p>";
-    return;
-  }
-
-  snapshot.forEach((childSnapshot) => {
-    const data = childSnapshot.val();
-
-    total += Number(data.rating);
+  snapshot.forEach(child => {
+    const d = child.val();
+    total += d.rating;
     count++;
 
-  const reviewCard = `
-  <div class="card">
-    <h3>${data.title}</h3>
-    <p>👤 ${data.name}</p>
-    <p class="stars">${"⭐".repeat(data.rating)}</p>
-    <p>${data.review}</p>
-    ${data.image ? `<img src="${data.image}" />` : ""}
-  </div>
-`;
-
-    reviewsContainer.innerHTML += reviewCard;
+    container.innerHTML += `
+      <div class="card">
+        <h3>${d.title}</h3>
+        <p>${d.name}</p>
+        <p class="stars">${"⭐".repeat(d.rating)}</p>
+        <p>${d.review}</p>
+        ${d.image ? `<img src="${d.image}">` : ""}
+        <button onclick="deleteReview('${child.key}')">Delete</button>
+      </div>
+    `;
   });
 
-  const avg = (total / count).toFixed(1);
   document.getElementById("avgRating").innerText =
-    "⭐ Average Rating: " + avg + " / 5";
+    count ? "⭐ Average Rating: " + (total / count).toFixed(1) : "No ratings yet";
 });
-window.deleteReview = function (id) {
-  remove(ref(database, "reviews/" + id));
+
+// delete
+window.deleteReview = id => remove(ref(db, "reviews/" + id));
+
+// navigation
+window.showSection = sec => {
+  document.getElementById("categorySection").style.display = "none";
+  ["movies","cafes","events"].forEach(s => document.getElementById(s).style.display = "none");
+  document.getElementById(sec).style.display = "block";
 };
+
+window.selectItem = item => {
+  selectedItem = item;
+  document.getElementById("reviewSection").style.display = "block";
+  document.getElementById("title").value = item;
+};
+
+window.goBack = () => {
+  document.getElementById("categorySection").style.display = "block";
+  ["movies","cafes","events","reviewSection"].forEach(s => document.getElementById(s).style.display = "none");
+};
+
+// slider
+const imgs = [
+  "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
+  "https://images.unsplash.com/photo-1498654896293-37aacf113fd9",
+  "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2"
+];
+
+let i = 0;
+setInterval(()=>{
+  i=(i+1)%imgs.length;
+  document.getElementById("slideImage").src = imgs[i];
+},3000);

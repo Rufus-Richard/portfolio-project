@@ -2,28 +2,92 @@
 <html>
 <head>
   <title>ReviewHub</title>
-
-  <!-- ✅ CSS MUST BE HERE -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Optional font (makes it aesthetic) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<div class="slider">
+  <img id="slideImage" src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4">
+</div>
+
 <header>
   <h1>⭐ ReviewHub</h1>
-  <p>Discover & share reviews on movies, cafes & events</p>
+  <p>Discover & review movies, cafes & events</p>
 </header>
 
 <section>
 
+<!-- CATEGORY -->
+<div id="categorySection">
+  <h2>Select Category</h2>
+  <div class="category-grid">
+    <div onclick="showSection('movies')">🎬 Movies</div>
+    <div onclick="showSection('cafes')">☕ Cafes</div>
+    <div onclick="showSection('events')">🎉 Events</div>
+  </div>
+</div>
+
+<!-- MOVIES -->
+<div id="movies" class="hidden">
+  <button onclick="goBack()">⬅ Back</button>
+  <h2>Movies</h2>
+  <div class="items">
+    <div onclick="selectItem('Avengers')">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1">
+      <p>Avengers</p>
+    </div>
+    <div onclick="selectItem('Inception')">
+      <img src="https://images.unsplash.com/photo-1505685296765-3a2736de412f">
+      <p>Inception</p>
+    </div>
+    <div onclick="selectItem('Interstellar')">
+      <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1">
+      <p>Interstellar</p>
+    </div>
+  </div>
+</div>
+
+<!-- CAFES -->
+<div id="cafes" class="hidden">
+  <button onclick="goBack()">⬅ Back</button>
+  <h2>Cafes</h2>
+  <div class="items">
+    <div onclick="selectItem('Star Cafe')">
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb">
+      <p>Star Cafe</p>
+    </div>
+    <div onclick="selectItem('Coffee House')">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
+      <p>Coffee House</p>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<div id="events" class="hidden">
+  <button onclick="goBack()">⬅ Back</button>
+  <h2>Events</h2>
+  <div class="items">
+    <div onclick="selectItem('College Fest')">
+      <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4">
+      <p>College Fest</p>
+    </div>
+    <div onclick="selectItem('Music Concert')">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30">
+      <p>Music Concert</p>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW -->
+<div id="reviewSection" class="hidden">
+  <button onclick="goBack()">⬅ Back</button>
+
   <form id="reviewForm">
-
     <input type="text" id="name" placeholder="Your Name" required>
-
-    <input type="text" id="title" placeholder="What are you reviewing? (Movie/Cafe/Event)" required>
+    <input type="text" id="title" readonly>
 
     <div class="stars-input">
       <span data-value="1">⭐</span>
@@ -34,21 +98,16 @@
     </div>
 
     <textarea id="review" placeholder="Write your experience..." required></textarea>
-
-    <input type="text" id="image" placeholder="Paste Image URL (optional)">
-
+    <input type="text" id="image" placeholder="Optional Image URL">
     <button type="submit">Post Review</button>
-
   </form>
+</div>
 
-  <h2 id="avgRating">⭐ Average Rating: 0</h2>
-
-  <div id="reviewsContainer"></div>
+<h2 id="avgRating">⭐ Average Rating: 0</h2>
+<div id="reviewsContainer"></div>
 
 </section>
 
-<!-- ✅ JS MUST BE AT BOTTOM -->
 <script type="module" src="script.js"></script>
-
 </body>
 </html>
