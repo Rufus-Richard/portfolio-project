@@ -57,6 +57,7 @@ document.getElementById("reviewForm").addEventListener("submit", e => {
 });
 
 // display
+
 const container = document.getElementById("reviewsContainer");
 
 onValue(ref(db, "reviews"), snapshot => {
@@ -107,9 +108,10 @@ window.goBack = function() {
 
 // slider
 const imgs = [
-  "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
-  "https://images.unsplash.com/photo-1498654896293-37aacf113fd9",
-  "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2"
+  "https://images.unsplash.com/photo-1517602302552-471fe67acf66", // cinema hall
+  "https://images.unsplash.com/photo-1498654896293-37aacf113fd9", // cafe aesthetic
+  "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2", // concert lights
+  "https://www.ceebeedesignstudio.com/assets/img/blog/blog-21/top-interior-companies-in-bangalore-25-11-2024.jpg"  // event crowd premium
 ];
 
 let i = 0;
