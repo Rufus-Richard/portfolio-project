@@ -85,22 +85,22 @@ onValue(ref(db, "reviews"), snapshot => {
 });
 
 // delete
-window.deleteReview = id => remove(ref(db, "reviews/" + id));
+window.deleteReview = function(id) {remove(ref(db, "reviews/" + id))};
 
 // navigation
-window.showSection = sec => {
+window.showSection = function(sec) {
   document.getElementById("categorySection").style.display = "none";
   ["movies","cafes","events"].forEach(s => document.getElementById(s).style.display = "none");
   document.getElementById(sec).style.display = "block";
 };
 
-window.selectItem = item => {
+window.selectItem = function(item) {
   selectedItem = item;
   document.getElementById("reviewSection").style.display = "block";
   document.getElementById("title").value = item;
 };
 
-window.goBack = () => {
+window.goBack = function() {
   document.getElementById("categorySection").style.display = "block";
   ["movies","cafes","events","reviewSection"].forEach(s => document.getElementById(s).style.display = "none");
 };
