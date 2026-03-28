@@ -8,8 +8,16 @@
 
 <body>
 
-<div class="slider">
+ <div class="slider">
   <img id="slideImage" src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4">
+</div>
+
+<div class="hero-text">
+  <h1>Explore. Review. Discover.</h1>
+  <p>Share your experience on movies, cafes & events</p>
+  <button onclick="document.getElementById('categorySection').scrollIntoView({behavior:'smooth'})">
+    Start Reviewing
+  </button>
 </div>
 
 <header>
@@ -17,8 +25,24 @@
   <p>Discover & review movies, cafes & events</p>
 </header>
 
-<section>
+<div class="features">
+  <div>
+    ⭐ <h3>Rate Easily</h3>
+    <p>Simple star rating system</p>
+  </div>
 
+  <div>
+    📝 <h3>Write Reviews</h3>
+    <p>Share your honest opinions</p>
+  </div>
+
+  <div>
+    🔍 <h3>Explore</h3>
+    <p>Discover movies, cafes & events</p>
+  </div>
+</div>
+
+<section>
 <!-- CATEGORY -->
 <div id="categorySection">
   <h2>Select Category</h2>
@@ -43,7 +67,7 @@
       <p>Inception</p>
     </div>
     <div onclick="selectItem('Interstellar')">
-      <img src="https://m.media-amazon.com/images/M/MV5BNjM5OTQzMTg4N15BMl5BanBnXkFtZTgwOTgyMjM0NTE@._V1_.jpg">
+      <img src="https://occ-0-8407-2218.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXlGE_81TVyWadhxe1mRoHwHbu-k4-niKIcCPL3MDPgdSBfNsSxNF1HqtOZDu5czYMzMY_Z2a7S08C1RGwI_CX0z-MAR-a1dVdHz.jpg?r=835">
       <p>Interstellar</p>
     </div>
   </div>
@@ -61,6 +85,10 @@
     <div onclick="selectItem('Coffee House')">
       <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
       <p>Coffee House</p>
+    </div>
+     <div onclick="selectItem('Chai house')">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwercKXnLnubITBVJsu8sLak0cbEXI4nMHdD2S3_tI15A1cDfOrjqSvsVBbNudTTMUnO69KGK8_sqmgDLbXdU6u3ElJXt4_eYYTI5wXctV-0zQecglD_OfeglJ1oIrn6FTvPEYrnk3g=s680-w680-h510-rw">
+      <p>Chai House</p>
     </div>
  </div>
 </div>
@@ -105,6 +133,19 @@
 
 <h2 id="avgRating">⭐ Average Rating: 0</h2>
 <div id="reviewsContainer"></div>
+
+<div class="about">
+  <h2>About ReviewHub:</h2>
+  <p>
+    ReviewHub is a platform where users can explore and share their experiences 
+    about movies, cafes, and events. It helps people make better decisions by 
+    reading real user reviews.
+  </p>
+</div>
+
+<footer>
+  <p>© 2026 ReviewHub | Built by Rufus Richard</p>
+</footer>
 
 </section>
 

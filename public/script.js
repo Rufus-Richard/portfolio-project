@@ -54,6 +54,8 @@ document.getElementById("reviewForm").addEventListener("submit", e => {
   });
 
   e.target.reset();
+  selectedRating = 0;
+document.querySelectorAll(".stars-input span").forEach(s => s.classList.remove("active"));
 });
 
 // display
@@ -66,6 +68,9 @@ onValue(ref(db, "reviews"), snapshot => {
 
   snapshot.forEach(child => {
     const d = child.val();
+   if (selectedItem && d.title !== selectedItem) {
+  return;
+}
     total += d.rating;
     count++;
 
@@ -103,6 +108,7 @@ window.selectItem = function(item) {
 
 window.goBack = function() {
   document.getElementById("categorySection").style.display = "block";
+  selectedItem = "";
   ["movies","cafes","events","reviewSection"].forEach(s => document.getElementById(s).style.display = "none");
 };
 
