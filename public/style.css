@@ -475,3 +475,23 @@ footer {
   border-radius: 12px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .category-grid,
+  .features {
+    flex-direction: column;
+  }
+
+  .items div {
+    width: 100%;
+  }
+
+  .hero-text {
+    top: 10%;
+    left: 5%;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+  }
+}
